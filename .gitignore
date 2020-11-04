@@ -1,5 +1,2 @@
 node_modules/
-app/bundle.js
-app/bundle.js.map
-app/main.css
-app/main.css.map
+app/dist/

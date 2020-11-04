@@ -51,7 +51,9 @@
 		"use-immer": "^0.4.1",
 		"uuidv4": "^6.2.4",
 		"webpack": "^4.44.2",
-		"webpack-cli": "^3.3.12",
+		"webpack-cli": "^3.3.12"
+	},
+	"devDependencies": {
 		"webpack-dev-server": "^3.11.0"
 	}
 }

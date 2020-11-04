@@ -8,7 +8,7 @@ module.exports = env => {
 		entry: './app/Main.js',
 		output: {
 			publicPath: '/',
-			path: path.resolve(__dirname, 'app'),
+			path: path.resolve(__dirname, 'app', 'dist'),
 			filename: 'bundle.js'
 		},
 		mode: 'development',
@@ -17,7 +17,8 @@ module.exports = env => {
 			port: 3000,
 			contentBase: path.join(__dirname, 'app'),
 			hot: true,
-			historyApiFallback: { index: 'index.html' }
+			historyApiFallback: { index: 'index.html' },
+			publicPath: '/dist/'
 		},
 		module: {
 			rules: [
