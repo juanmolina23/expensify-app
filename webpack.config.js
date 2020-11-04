@@ -1,39 +1,60 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
-module.exports = {
-	entry: './app/Main.js',
-	output: {
-		publicPath: '/',
-		path: path.resolve(__dirname, 'app'),
-		filename: 'bundle.js'
-	},
-	mode: 'development',
-	devtool: 'source-map',
-	devServer: {
-		port: 3000,
-		contentBase: path.join(__dirname, 'app'),
-		hot: true,
-		historyApiFallback: { index: 'index.html' }
-	},
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /(node_modules)/,
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: [
-							'@babel/preset-react',
-							['@babel/preset-env', { targets: { node: '12' } }]
-						]
+module.exports = env => {
+	const isProduction = env === 'production'
+
+	return {
+		entry: './app/Main.js',
+		output: {
+			publicPath: '/',
+			path: path.resolve(__dirname, 'app'),
+			filename: 'bundle.js'
+		},
+		mode: 'development',
+		devtool: isProduction ? 'source-map' : 'inline-source-map',
+		devServer: {
+			port: 3000,
+			contentBase: path.join(__dirname, 'app'),
+			hot: true,
+			historyApiFallback: { index: 'index.html' }
+		},
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /(node_modules)/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								'@babel/preset-react',
+								['@babel/preset-env', { targets: { node: '12' } }]
+							]
+						}
 					}
+				},
+				{
+					test: /\.s?css$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: true,
+								url: false
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true
+							}
+						}
+					]
 				}
-			},
-			{
-				test: /\.s?css$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
-			}
-		]
+			]
+		},
+		plugins: [new MiniCssExtractPlugin()]
 	}
 }

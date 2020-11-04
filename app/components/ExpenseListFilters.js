@@ -55,7 +55,9 @@ function ExpenseListFilters() {
 			</select>
 			<DateRangePicker
 				startDate={filters.startDate}
+				startDateId='startDateID'
 				endDate={filters.endDate}
+				endDateId='endDateID'
 				onDatesChange={onDatesChange}
 				focusedInput={state.calFocused}
 				onFocusChange={onFocusChange}

@@ -8,7 +8,6 @@ function ExpenseList() {
 	const filters = useSelector(state => state.filters)
 	const dispatch = useDispatch()
 	const expenses = selectExpenses(expensesUnfiltered, filters)
-
 	return (
 		<div>
 			<h2>Expense List.</h2>

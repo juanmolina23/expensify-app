@@ -7,21 +7,21 @@ const initialExpensesState = [
 		description: 'Gym',
 		note: '',
 		amount: 640,
-		createdAt: 100
+		createdAt: 1604500152600
 	},
 	{
 		id: uuid(),
 		description: 'Water bill',
 		note: '',
 		amount: 450,
-		createdAt: 170
+		createdAt: 1604500152507
 	},
 	{
 		id: uuid(),
 		description: 'Phone bill',
 		note: '',
 		amount: 40,
-		createdAt: 150
+		createdAt: 1604500152407
 	}
 ]
 
