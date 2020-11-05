@@ -13,7 +13,7 @@ function ExpenseListItem(props) {
 				<h3>{expense.description}</h3>
 			</Link>
 			<p>
-				{numeral(expense.amount / 100).format('$0,0.00')} -{' '}
+				{numeral(expense.amount / 100).format('$0,0.00')} -
 				{moment(expense.createdAt).format('MMMM Do, YYYY')}
 			</p>
 		</div>
