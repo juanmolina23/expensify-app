@@ -28,7 +28,7 @@ function EditExpense() {
 				expense={expense}
 				onSubmit={expense => {
 					dispatch(startEditExpense(id, expense))
-					history.push('/')
+					history.push('/dashboard')
 				}}
 			/>
 			<button onClick={handleRemove}>Remove</button>

@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Dashboard from './components/Dashboard'
 import CreateExpense from './components/CreateExpense'
 import EditExpense from './components/EditExpense'
+import LoginPage from './components/LoginPage'
 
 function App() {
 	return (
@@ -12,6 +13,9 @@ function App() {
 				<Header />
 				<Switch>
 					<Route path='/' exact>
+						<LoginPage />
+					</Route>
+					<Route path='/dashboard'>
 						<Dashboard />
 					</Route>
 					<Route path='/create'>
