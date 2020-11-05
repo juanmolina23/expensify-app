@@ -5,7 +5,7 @@ module.exports = env => {
 	const isProduction = env === 'production'
 
 	return {
-		entry: './app/Main.js',
+		entry: ['babel-polyfill', './app/Main.js'],
 		output: {
 			publicPath: '/',
 			path: path.resolve(__dirname, 'app', 'dist'),

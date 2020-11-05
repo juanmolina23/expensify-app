@@ -40,32 +40,43 @@ function ExpenseListFilters() {
 	}
 
 	return (
-		<>
-			<input
-				value={filters.text}
-				type='text'
-				onChange={e => handleChange(e.target.value)}
-			/>
-			<select
-				value={filters.sortBy}
-				onChange={e => handleSortChange(e.target.value)}
-			>
-				<option value='date'>Date</option>
-				<option value='amount'>Amount</option>
-			</select>
-			<DateRangePicker
-				startDate={filters.startDate}
-				startDateId='startDateID'
-				endDate={filters.endDate}
-				endDateId='endDateID'
-				onDatesChange={onDatesChange}
-				focusedInput={state.calFocused}
-				onFocusChange={onFocusChange}
-				showClearDates={true}
-				numberOfMonths={1}
-				isOutsideRange={() => false}
-			/>
-		</>
+		<div className='content-container'>
+			<div className='input-group'>
+				<div className='input-group__item'>
+					<input
+						className='text-input'
+						placeholder='Search expenses'
+						value={filters.text}
+						type='text'
+						onChange={e => handleChange(e.target.value)}
+					/>
+				</div>
+				<div className='input-group__item'>
+					<select
+						className='select'
+						value={filters.sortBy}
+						onChange={e => handleSortChange(e.target.value)}
+					>
+						<option value='date'>Date</option>
+						<option value='amount'>Amount</option>
+					</select>
+				</div>
+				<div className='input-group__item'>
+					<DateRangePicker
+						startDate={filters.startDate}
+						startDateId='startDateID'
+						endDate={filters.endDate}
+						endDateId='endDateID'
+						onDatesChange={onDatesChange}
+						focusedInput={state.calFocused}
+						onFocusChange={onFocusChange}
+						showClearDates={true}
+						numberOfMonths={1}
+						isOutsideRange={() => false}
+					/>
+				</div>
+			</div>
+		</div>
 	)
 }
 

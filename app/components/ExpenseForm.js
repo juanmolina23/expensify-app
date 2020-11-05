@@ -56,7 +56,7 @@ function ExpenseForm(props) {
 
 		if (!state.description || !state.amount) {
 			setState(draft => {
-				draft.errorMessage = 'Please check your description or amount.'
+				draft.errorMessage = 'Please provide description and amount.'
 			})
 		} else {
 			setState(draft => {
@@ -72,9 +72,12 @@ function ExpenseForm(props) {
 	}
 
 	return (
-		<form onSubmit={e => onSubmit(e)}>
-			{state.errorMessage && <p>{state.errorMessage}</p>}
+		<form className='form' onSubmit={e => onSubmit(e)}>
+			{state.errorMessage && (
+				<p className='form__error'>{state.errorMessage}</p>
+			)}
 			<input
+				className='text-input'
 				type='text'
 				placeholder='Description'
 				autoFocus
@@ -85,6 +88,7 @@ function ExpenseForm(props) {
 			<input
 				type='text'
 				name='amount'
+				className='text-input'
 				placeholder='Amount'
 				value={state.amount}
 				onChange={e => onAmountChange(e)}
@@ -98,12 +102,15 @@ function ExpenseForm(props) {
 				isOutsideRange={() => false}
 			/>
 			<textarea
+				className='textarea'
 				placeholder='Add a note for your expense (optional)'
 				name='note'
 				value={state.note}
 				onChange={e => onNoteChange(e)}
 			></textarea>
-			<button>Save Expense</button>
+			<div>
+				<button className='button'>Save Expense</button>
+			</div>
 		</form>
 	)
 }

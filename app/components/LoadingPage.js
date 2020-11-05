@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 
 function LoadingPage() {
 	return (
-		<>
-			<p>Loading...</p>
-		</>
+		<div className='loader'>
+			<img className='loader__image' src='/images/loader.gif' />
+		</div>
 	)
 }
 

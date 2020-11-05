@@ -9,13 +9,19 @@ function CreateExpense() {
 	const history = useHistory()
 	return (
 		<div>
-			<p>Add Expense</p>
-			<ExpenseForm
-				onSubmit={expense => {
-					dispatch(startAddExpense(expense))
-					history.push('/')
-				}}
-			/>
+			<div className='page-header'>
+				<div className='content-container'>
+					<h1 className='page-header__title'>Add Expense</h1>
+				</div>
+			</div>
+			<div className='content-container'>
+				<ExpenseForm
+					onSubmit={expense => {
+						dispatch(startAddExpense(expense))
+						history.push('/')
+					}}
+				/>
+			</div>
 		</div>
 	)
 }
