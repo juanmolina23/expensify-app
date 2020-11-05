@@ -4,6 +4,7 @@ import App from './App'
 import LoadingPage from './components/LoadingPage'
 import { Provider } from 'react-redux'
 import store from './store/store'
+import { login, logout } from './actions/auth'
 import { startSetExpenses } from './actions/expenses'
 import { firebase } from './firebase/firebase'
 import 'normalize.css/normalize.css'
@@ -26,12 +27,14 @@ ReactDOM.render(<LoadingPage />, document.querySelector('#app'))
 
 firebase.auth().onAuthStateChanged(user => {
 	if (user) {
+		store.dispatch(login(user.uid))
 		store.dispatch(startSetExpenses()).then(() => {
 			renderApp()
 		})
 		console.log('Logged in')
 	} else {
 		console.log('Logged out')
+		store.dispatch(logout())
 		renderApp()
 	}
 })

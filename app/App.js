@@ -1,29 +1,20 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Header from './components/Header'
 import Dashboard from './components/Dashboard'
 import CreateExpense from './components/CreateExpense'
 import EditExpense from './components/EditExpense'
 import LoginPage from './components/LoginPage'
-
+import PrivateRoute from './components/PrivateRoute'
+import PublicRoute from './components/PublicRoute'
 function App() {
 	return (
 		<>
 			<BrowserRouter>
-				<Header />
 				<Switch>
-					<Route path='/' exact>
-						<LoginPage />
-					</Route>
-					<Route path='/dashboard'>
-						<Dashboard />
-					</Route>
-					<Route path='/create'>
-						<CreateExpense />
-					</Route>
-					<Route path='/edit/:id'>
-						<EditExpense />
-					</Route>
+					<PublicRoute path='/' component={LoginPage} exact />
+					<PrivateRoute path='/dashboard' component={Dashboard} />
+					<PrivateRoute path='/create' component={CreateExpense} />
+					<PrivateRoute path='/edit/:id' component={EditExpense} />
 				</Switch>
 			</BrowserRouter>
 		</>

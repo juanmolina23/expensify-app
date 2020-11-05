@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
-import expensesReducer from '../reducers/expensesReducer'
-import filtersReducer from '../reducers/filtersReducer'
+import expensesReducer from './expensesReducer'
+import filtersReducer from './filtersReducer'
+import authReducer from './authReducer'
 
 const rootReducer = combineReducers({
 	expenses: expensesReducer,
-	filters: filtersReducer
+	filters: filtersReducer,
+	auth: authReducer
 })
 
 export default rootReducer
