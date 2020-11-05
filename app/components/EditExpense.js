@@ -2,7 +2,12 @@ import React, { useEffect } from 'react'
 import ExpenseForm from './ExpenseForm'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { editExpense, removeExpense } from '../actions/expenses'
+import {
+	editExpense,
+	removeExpense,
+	startRemoveExpense,
+	startEditExpense
+} from '../actions/expenses'
 
 function EditExpense() {
 	const { id } = useParams()
@@ -13,7 +18,7 @@ function EditExpense() {
 	)
 
 	function handleRemove() {
-		dispatch(removeExpense(expense.id))
+		dispatch(startRemoveExpense(expense.id))
 		history.push('/')
 	}
 
@@ -22,7 +27,7 @@ function EditExpense() {
 			<ExpenseForm
 				expense={expense}
 				onSubmit={expense => {
-					dispatch(editExpense(id, expense))
+					dispatch(startEditExpense(id, expense))
 					history.push('/')
 				}}
 			/>
