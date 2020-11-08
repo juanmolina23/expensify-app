@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
+import ModalRemoveExpense from './ModalRemoveExpense'
 import ExpenseForm from './ExpenseForm'
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,8 +9,10 @@ import {
 	startRemoveExpense,
 	startEditExpense
 } from '../actions/expenses'
+import { set } from 'numeral'
 
 function EditExpense() {
+	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const { id } = useParams()
 	const history = useHistory()
 	const dispatch = useDispatch()
@@ -37,9 +40,17 @@ function EditExpense() {
 						history.push('/dashboard')
 					}}
 				/>
-				<button className='button button__secondary' onClick={handleRemove}>
+				<button
+					className='button button__secondary'
+					onClick={() => setModalIsOpen(true)}
+				>
 					Remove Expense
 				</button>
+				<ModalRemoveExpense
+					isOpen={modalIsOpen}
+					onClickNo={() => setModalIsOpen(false)}
+					onClickYes={handleRemove}
+				/>
 			</div>
 		</div>
 	)
