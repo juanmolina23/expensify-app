@@ -19,3 +19,8 @@
 	@extend .button;
 	background: #888888;
 }
+
+.button__remove {
+	@extend .button;
+	background: #c00000;
+}

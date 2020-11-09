@@ -50,6 +50,7 @@ function EditExpense() {
 					isOpen={modalIsOpen}
 					onClickNo={() => setModalIsOpen(false)}
 					onClickYes={handleRemove}
+					setModalIsOpen={setModalIsOpen}
 				/>
 			</div>
 		</div>
